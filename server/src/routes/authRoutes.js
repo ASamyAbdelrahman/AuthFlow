@@ -1,3 +1,9 @@
+/**
+ * @file auth.route.js
+ * @brief Routes for authentication-related operations.
+ */
+
+// Import necessary modules and controllers
 import { Router } from 'express';
 import {
     signup,
@@ -7,12 +13,13 @@ import {
     verifyEmail,
     forgotPassword,
     resetPassword
-} from "../controllers/auth.controller.js";
+} from "../controllers/authController.js";
 
+// Create a new router instance
 const router = Router();
 
-router.get("/check-auth", checkAuth); // implement verifyToken middleware in the controller
-
+// Define routes for authentication
+router.get("/check-auth", checkAuth);
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);

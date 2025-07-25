@@ -1,0 +1,7 @@
+{
+  "template_uuid": "a7b6628e-f53d-4945-b7cb-7b30dbaf69b9",
+  "template_variables": {
+    "company_info_name": "AuthFlow Company",
+    "name": "{name}"
+  }
+}

@@ -3,13 +3,16 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import authRoutes from "./routes/auth.route.js";
-import DBconnection from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import DBconnection from "./config/database.js";
+import { requestLogger, errorLogger } from './middleware/logger.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(requestLogger);
 
 await DBconnection.connect();
 
@@ -19,6 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRoutes);
+
+app.use(errorLogger);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
